@@ -14,14 +14,23 @@ import {
 import { Menu } from "lucide-react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
+import Link from "next/link"
 
 export default function Header() {
     const t = useTranslations('Header');
+
+    const menuItems = [
+      {url: '/', text: 'NightLife'},
+      {url: '', text: 'Gastronomy'},
+      {url: '', text: 'Events'},
+      {url: '', text: 'Blog'}
+    ];
   return (
-    <header className="w-full border-b">
+    <header className="fixed z-40 w-full bg-black/90 border-b">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-8">
         {/* Logo */}
         <div className="h-12">
+          <Link href="/">
             <Image
                 src="/image/logo.png"
                 alt="Spain Club Logo"
@@ -29,16 +38,19 @@ export default function Header() {
                 height={349}
                 className="h-full w-auto"
             />
+          </Link>
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6">
-          <a href="#features" className="text-sm font-medium hover:underline">{t("Nightlife")}</a>
+        <nav className="hidden md:flex space-x-8">
+          {menuItems.map((m, i) => (
+            <Link href={m.url} className="text-white text-2xl font-semibold hover:underline" key={i}>{m.text}</Link>
+          ))}
         </nav>
 
         {/* Call to Action */}
         <div className="hidden md:block">
-          <Button>Get Started</Button>
+          <Button>Login</Button>
         </div>
 
         {/* Mobile Menu */}
@@ -49,25 +61,18 @@ export default function Header() {
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="left">
                 <SheetHeader>
                     <SheetTitle></SheetTitle>
                     <SheetDescription></SheetDescription>
                 </SheetHeader>
-              <nav className="flex flex-col space-y-4 mt-6">
-                <SheetClose asChild>
-                  <a href="#features" className="text-base font-medium">Features</a>
-                </SheetClose>
-                <SheetClose asChild>
-                  <a href="#pricing" className="text-base font-medium">Pricing</a>
-                </SheetClose>
-                <SheetClose asChild>
-                  <a href="#contact" className="text-base font-medium">Contact</a>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Button className="mt-4 w-full">Get Started</Button>
-                </SheetClose>
-              </nav>
+                <nav className="flex flex-col space-y-4 mt-6 p-12">
+                  {menuItems.map((m, i) => (
+                    <SheetClose asChild>
+                      <Link href={m.url} className="text-base font-medium" key={i}>{m.text}</Link>
+                    </SheetClose>
+                  ))}
+                </nav>
             </SheetContent>
           </Sheet>
         </div>

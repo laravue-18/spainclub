@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="{ locale }">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`font-sanserif antialiased`}
       >
       <NextIntlClientProvider>
         {children}
