@@ -146,12 +146,12 @@ export default function Home() {
         </Link>
       </section>
       {/* Providers */}
-      <section className="py-20">
+      <section className="py-12 xl:py-20">
         <div className="container mx-auto px-4 py-8 text-center">
-          <h2 className="text-3xl font-semibold mb-10">
+          <h2 className="text-2xl xl:text-3xl font-semibold mb-10">
             Your place to find and enjoy the best experiences, nightlife, events, and cuisine in Valencia.
           </h2>
-          <div className="text-5xl text-secondary font-bold mb-24">
+          <div className="text-3xl xl:text-5xl text-secondary font-bold mb-24">
             <Typewriter
               options={{
                 strings: ["What's next?", "Come on?", "Choose your plan!"],
@@ -160,7 +160,7 @@ export default function Home() {
               }}
             />
           </div>
-          <h2 className="text-3xl font-semibold mb-6">
+          <h2 className="text-2xl xl:text-3xl font-semibold mb-6">
             We collavorate with the best venues in Valencia, including:
           </h2>
           
@@ -168,29 +168,29 @@ export default function Home() {
             <CarouselContent>
               {
                 logos.map((logo, index) => (
-                  <CarouselItem className="basis-1/6" key={index}>
+                  <CarouselItem className="basis-1/3 xl:basis-1/6" key={index}>
                     <img src={logo.img} alt="" />
                   </CarouselItem>
                 ))
               }
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            {/* <CarouselPrevious /> */}
+            {/* <CarouselNext /> */}
           </Carousel>
         </div>
       </section>
       {/* Parallax */}
-      <section className="bg-[url(/image/valencia-bg.jpg)] bg-cover bg-center bg-fixed h-100"></section>
+      <section className="h-40 xl:h-100 bg-[url(/image/valencia-bg.jpg)] bg-cover bg-center bg-fixed"></section>
       {/* Why us */}
-      <section className="py-20">
-        <div className="container mx-auto">
+      <section className="py-12 xl:py-20">
+        <div className="container mx-auto px-4">
           <h3 className="text-3xl text-center font-bold mb-8">Why us?</h3>
           <p className="text-center max-w-200 mx-auto font-semibold mb-8">
             At Spain Club, we take the nightlife and dining experience to the next level. With years of experience in the industry, we collaborate with Valencia's most exclusive venues to offer you premium events, VIP access, and unique benefits.
           </p>
-          <div className="flex flex-wrap justify-center gap-20 mb-20">
+          <div className="flex flex-wrap justify-center mb-12 xl:mb-20">
             {awards.map( (a, index) => (
-              <div className="text-center" key={index}>
+              <div className="text-center w-1/2 xl:w-1/5 p-8" key={index}>
                 <span className="font-tanpearl text-secondary text-3xl font-semibold">{ a.value }</span>
                 <p className="">{ a.title }</p>
               </div>
@@ -211,12 +211,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-20">
+      <section className="py-12 xl:py-20">
         <h3 className="text-3xl text-center font-bold mb-16">New arrivals. Don't miss them!</h3>
         <Carousel opts={{loop: true}} plugins={[Autoplay({delay: 3000})]}>
-          <CarouselContent className="relative">
+          <CarouselContent className="relative ml-0">
             {arrivals.map((a, index) => (
-              <CarouselItem key={index} className="">
+              <CarouselItem key={index} className="pl-0">
                 <a target="_blank" href={a.link_url} className="">
                   <div className="relative bg-cover bg-center" style={{ backgroundImage: `url(${a.img})` }}>
                     <div className="absolute inset-0 bg-black/70 mix-blend-multiply"></div>
@@ -237,7 +237,7 @@ export default function Home() {
         </Carousel>
       </section>
       {/* Faq */}
-      <section className="container mx-auto py-20">
+      <section className="container mx-auto py-12 xl:py-20 px-4">
         <h3 className="text-3xl text-center font-bold mb-16">Frequently Asked Questions</h3>
         <Accordion
           type="single"
@@ -259,7 +259,7 @@ export default function Home() {
         </Accordion>
       </section>
       {/* Subscribe */}
-      <section className="flex justify-center py-20">
+      <section className="flex justify-center py-12 xl:py-20 px-4">
           <div className="rounded-lg bg-gray-100 p-16">
             <h3 className="text-3xl text-center font-bold mb-4">Subscribe to our newsletter</h3>
             <p className="text-center mb-8">Receive exclusive content, events, and benefits before anyone else.</p>

@@ -68,10 +68,13 @@ export default function Header() {
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4 mt-6 p-12">
                   {menuItems.map((m, i) => (
-                    <SheetClose asChild>
-                      <Link href={m.url} className="text-base font-medium" key={i}>{m.text}</Link>
+                    <SheetClose asChild key={i}>
+                      <Link href={m.url} className="text-base font-medium">{m.text}</Link>
                     </SheetClose>
                   ))}
+                  <SheetClose asChild>
+                    <Button className="mt-4 w-full">Login</Button>
+                  </SheetClose>
                 </nav>
             </SheetContent>
           </Sheet>
