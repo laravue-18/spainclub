@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
           <div className="flex-1 flex flex-wrap justify-center gap-4">
             {venues.map((v, i) => (
-              <div className="w-1/4" key={i}>
+              <div className="w-1/4 xl:w-1/8" key={i}>
                 <img src={v.img} alt="" className="w-full" />
               </div>
             ))}

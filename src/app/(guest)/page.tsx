@@ -20,7 +20,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Input } from "@/components/ui/input"
 
 
 export default function Home() {
@@ -119,7 +118,7 @@ export default function Home() {
   return (
     <>
       {/* Types */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 text-white bg-black pt-12">
+      <section className="grid grid-cols-1 lg:grid-cols-3 text-white bg-black">
         <Link href="/nightclubs-valencia">
           <div className="w-full bg-[url('/image/nightlife-bg.jpg')] bg-cover bg-center aspect-square flex items-center justify-center">
             <div className="text-center">
@@ -216,7 +215,7 @@ export default function Home() {
         <Carousel opts={{loop: true}} plugins={[Autoplay({delay: 3000})]}>
           <CarouselContent className="relative ml-0">
             {arrivals.map((a, index) => (
-              <CarouselItem key={index} className="pl-0">
+              <CarouselItem key={index} className="">
                 <a target="_blank" href={a.link_url} className="">
                   <div className="relative bg-cover bg-center" style={{ backgroundImage: `url(${a.img})` }}>
                     <div className="absolute inset-0 bg-black/70 mix-blend-multiply"></div>
@@ -257,16 +256,6 @@ export default function Home() {
           ))}
           
         </Accordion>
-      </section>
-      {/* Subscribe */}
-      <section className="flex justify-center py-12 xl:py-20 px-4">
-          <div className="rounded-lg bg-gray-100 p-16">
-            <h3 className="text-3xl text-center font-bold mb-4">Subscribe to our newsletter</h3>
-            <p className="text-center mb-8">Receive exclusive content, events, and benefits before anyone else.</p>
-            <Input type="text" placeholder="Name" className="mb-4"/>
-            <Input type="email" placeholder="Email" className="mb-4" />
-            <Button>I'm in</Button>
-          </div>
       </section>
     </>
   );

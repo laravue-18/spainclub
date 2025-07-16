@@ -20,7 +20,7 @@ export default function Header() {
     const t = useTranslations('Header');
 
     const menuItems = [
-      {url: '/', text: 'NightLife'},
+      {url: '/nightclubs-valencia', text: 'NightLife'},
       {url: '', text: 'Gastronomy'},
       {url: '', text: 'Events'},
       {url: '', text: 'Blog'}
