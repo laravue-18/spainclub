@@ -15,9 +15,13 @@ import { Menu } from "lucide-react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
+import { signIn, useSession } from "next-auth/react";
 
 export default function Header() {
     const t = useTranslations('Header');
+    const { data: session } = useSession();
+
+    console.log('Session:', session);
 
     const menuItems = [
       {url: '/nightclubs-valencia', text: 'NightLife'},
@@ -50,7 +54,7 @@ export default function Header() {
 
         {/* Call to Action */}
         <div className="hidden md:block">
-          <Button>Login</Button>
+          <Button onClick={() => signIn()}>Sign In</Button>
         </div>
 
         {/* Mobile Menu */}

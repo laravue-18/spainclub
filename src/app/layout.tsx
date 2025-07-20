@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import { SessionProvider } from "next-auth/react"
 
 
 const geistSans = Geist({
@@ -34,7 +35,9 @@ export default function RootLayout({
         className={`font-sanserif antialiased`}
       >
       <NextIntlClientProvider>
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
       </NextIntlClientProvider>
       </body>
     </html>
