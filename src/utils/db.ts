@@ -2,18 +2,12 @@
 
 import { saltAndHashPassword } from "./password";
 import { SignUpActionState, signUpSchema, SignInActionState, signInSchema } from "@/lib/zod";
-import { PrismaClient } from "@/generated/prisma"; // Assuming you have a Prisma client setup
+import { prisma } from "@/lib/prisma"; // Assuming you have a Prisma client setup
 import { redirect } from "next/navigation";
 import { cookies } from 'next/headers'
 import { signIn } from "@/auth";
 import bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient();
-/**
- * Function to create a new user in the database.
- * @param formData - Form data containing user details.
- * @returns Promise<void>
- */
 export async function createUser(
     _prev: SignUpActionState, 
     formData: FormData
