@@ -1,20 +1,10 @@
+import { cookies } from 'next/headers'; 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { SessionProvider } from "next-auth/react"
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import FlashMessage from '@/components/FlashMessage';
 
 export const metadata: Metadata = {
   title: "Dev",
@@ -22,12 +12,14 @@ export const metadata: Metadata = {
   description: "Experience the vibrant nightlife and exclusive dining options in Valencia with Spain Club.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const locale = getLocale();
+
+  const flash = (await cookies()).get('flash')?.value;
 
   return (
     <html lang="{ locale }">
@@ -36,7 +28,8 @@ export default function RootLayout({
       >
       <NextIntlClientProvider>
         <SessionProvider>
-          {children}
+          {flash && <FlashMessage message={JSON.parse(flash)} />}
+            {children}
         </SessionProvider>
       </NextIntlClientProvider>
       </body>

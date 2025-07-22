@@ -15,7 +15,7 @@ import { Menu } from "lucide-react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Header() {
     const t = useTranslations('Header');
@@ -54,7 +54,22 @@ export default function Header() {
 
         {/* Call to Action */}
         <div className="hidden md:block">
-          <Button onClick={() => signIn()}>Sign In</Button>
+          {session ? (
+            <>
+              <Link href="/profile"><Button>Profile</Button></Link>
+              <Button onClick={() => signOut()} className="ml-4">Sign Out</Button>
+            </>
+          ) : (
+            <>
+              <Link href="/sign-in" className="ml-4">
+                <Button>Sign In</Button>
+              </Link>
+              <Link href="/sign-up" className="ml-4">
+                <Button>Sign Up</Button>
+              </Link>
+            </>
+          )}
+          {/* Sign Up Button */}
         </div>
 
         {/* Mobile Menu */}
@@ -77,7 +92,21 @@ export default function Header() {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <Button className="mt-4 w-full">Login</Button>
+                    {session ? (
+                      <>
+                        <Link href="/profile"><Button>Profile</Button></Link>
+                        <Button onClick={() => signOut()}>Sign Out</Button>
+                      </>
+                    ) : (
+                      <>
+                        <Link href="/sign-in" className="ml-4">
+                          <Button>Sign In</Button>
+                        </Link>
+                        <Link href="/sign-up" className="ml-4">
+                          <Button>Sign Up</Button>
+                        </Link>
+                      </>
+                    )}
                   </SheetClose>
                 </nav>
             </SheetContent>
